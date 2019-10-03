@@ -72,7 +72,7 @@ function mdmlan_protocol.dissector(buffer, pinfo, tree)
   
   subtree:add_le(ptype, ptype_value)
   
-  pinfo.cols.info:append("; " .. "[" .. ptype_value .. "] " .. buffer(proto_version_length + 1, app_length - proto_version_length - 1):string() .. "/" .. buffer(server_length + 1, proto_version_length - server_length - 1):string())
+  pinfo.cols.info:append("; " .. "[" .. ptype_value .. "] " .. buffer(proto_version_length + 1, app_length - proto_version_length - 1):string() .. "/" .. buffer(server_length + 1, proto_version_length - server_length - 1):string() .. " (" .. buffer(app_length + 1, ip_length - app_length - 1):string() .. ":" .. buffer(ip_length + 1):string() .. ")")
   
 end
 
